@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Task from './components/Task';
 
 function App() {
@@ -32,7 +32,6 @@ function App() {
     if (!task) return alert('Please enter Task');
 
     const newTask = {
-      id: data.length,
       name: task,
       isAllDone: false,
       task: [],

@@ -22,9 +22,10 @@ function Task({ task, i, data, setData }) {
 
     if (!subTask) return alert('Please enter sub-task');
     const newSubTask = { name: subTask, isDone: false };
-    const targetTask = { ...task, task: [...task.task, newSubTask] };
+
     let newData = [...data];
-    newData[i] = targetTask;
+    newData[i] = { ...task };
+    newData[i].task.push(newSubTask);
     setData(newData);
 
     setSubTask('');

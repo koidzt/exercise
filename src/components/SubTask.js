@@ -3,18 +3,19 @@ import React from 'react';
 function SubTask({ task, i, subTask, j, data, setData }) {
   const editIsDone = () => {
     const updateSubTask = { ...subTask, isDone: !subTask.isDone };
-    let targetTask = { ...task, task: [...task.task] };
-    targetTask.task[j] = updateSubTask;
     let newData = [...data];
-    newData[i] = targetTask;
+    newData[i] = { ...task };
+    newData[i].task = [...task.task];
+    newData[i].task[j] = updateSubTask;
     newData[i].isAllDone = newData[i].task.find((subTask) => !subTask.isDone) ? false : true;
     setData(newData);
   };
 
   const deleteSubTask = () => {
+    const newTask = task.task.filter((item) => item !== subTask);
     let newData = [...data];
-    const targetTask = { ...task, task: task.task.filter((item) => item !== subTask) };
-    newData[i] = targetTask;
+    newData[i] = { ...task };
+    newData[i].task = [...newTask];
     setData(newData);
   };
 
