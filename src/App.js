@@ -1,72 +1,67 @@
 import './App.css';
-import axios from 'axios';
-import { useTable } from 'react-table';
-import React, { useEffect, useState } from 'react';
-
-function Table({ columns, data }) {
-  // Use the state and functions returned from useTable to build your UI
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
-    columns,
-    data,
-  });
-
-  // Render the UI for your table
-  return (
-    <table className="table" {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row, i) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  );
-}
+import { useEffect, useState } from 'react';
+import Task from './components/Task';
 
 function App() {
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    axios.get('https://5f5849b01a07d600167e7a15.mockapi.io/api/v1/callback/get-all-callbacks').then((res) => {
-      setData(res.data);
-    });
-  }, []);
-
-  console.log(data);
-  const columns = React.useMemo(() => [
+  const [task, setTask] = useState();
+  const [data, setData] = useState([
     {
-      Header: 'ID',
-      accessor: 'id',
-    },
-    {
-      Header: 'Created At',
-      accessor: 'createdAt',
-    },
-    {
-      Header: 'Phone',
-      accessor: 'phone_number',
-    },
-    {
-      Header: 'Language',
-      accessor: 'language',
+      name: 'Task',
+      isAllDone: false,
+      task: [
+        {
+          name: 'sub-Task1',
+          isDone: false,
+        },
+        {
+          name: 'sub-Task2',
+          isDone: false,
+        },
+      ],
     },
   ]);
-  return <div className="App">{data && <Table columns={columns} data={data} />}</div>;
+
+  const handleChangeTask = (event) => {
+    const value = event.target.value;
+    // console.log(value);
+    setTask(value);
+  };
+
+  const createTask = (event) => {
+    event.preventDefault();
+    if (!task) return alert('Please enter Task');
+
+    const newTask = {
+      id: data.length,
+      name: task,
+      isAllDone: false,
+      task: [],
+    };
+
+    const newData = [...data, newTask];
+    setData(newData);
+    setTask('');
+  };
+
+  // console.log('current data =>', data);
+
+  return (
+    <div className="App">
+      <div className="container">
+        <form className="my-2 input-group" onSubmit={createTask}>
+          <input className="form-control" value={task} onChange={handleChangeTask} placeholder="Task" />
+          <button className="btn btn-primary" type="submit">
+            Create
+          </button>
+        </form>
+
+        <ul className="list-group list-group-flush">
+          {data &&
+            data.map((item, i) => <Task key={`task-list-${i}`} task={item} i={i} data={data} setData={setData} />)}
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 export default App;
