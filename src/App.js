@@ -1,52 +1,18 @@
-import { useEffect, useState } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import { APIMockMapping } from './services/APIServices/APIMockMapping';
-import { nanoid } from 'nanoid';
-import NormalCard from './assets/components/NormalCard';
-import NewCard from './assets/components/NewCard';
 
 function App() {
-  const [dataLists, setDataLists] = useState([]);
-  const [isAddCard, setIsAddCard] = useState(false);
-
-  const fetchData = async () => {
-    try {
-      const result = await APIMockMapping();
-      setDataLists(result?.data);
-      console.log(result);
-    } catch (error) {
-      Promise.reject(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const toggleAddCard = () => {
-    setIsAddCard(!isAddCard);
-  };
-
   return (
     <div className="App">
-      <div>Test</div>
-      {isAddCard ? (
-        <NewCard dataLists={dataLists} setDataLists={setDataLists} toggleAddCard={toggleAddCard} />
-      ) : (
-        <button onClick={toggleAddCard}>Add Card</button>
-      )}
-      <div
-        style={{
-          width: '100%',
-          height: 'auto',
-          display: 'flex',
-          flexWrap: 'wrap',
-        }}
-      >
-        {dataLists.map((dataList) => (
-          <NormalCard key={nanoid()} name={dataList.name} phone={dataList.phone} profile={dataList.profile} />
-        ))}
-      </div>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
