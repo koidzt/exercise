@@ -52,29 +52,29 @@ function AssetProductCard() {
   return (
     <div className="product-card">
       <div className="img-product">
-        <img className="product-photo" alt="..." src={picture} />
+        <img className="product-photo" alt={name} src={picture} />
         {favStatus ? <i className="fav-icon icon fa fa-heart"></i> : <i className="fav-icon icon far fa-heart"></i>}
       </div>
 
       <div className="detail-product">
         <div className="product-name">
-          <h4>{name}</h4>
+          <h5 className="product-name">{name}</h5>
           <i className="basket-icon fas fa-shopping-basket"></i>
         </div>
 
-        <div className="product-price">
+        <div className="product-price-distance">
           <div className="price">
-            <h2>฿ {price}</h2>
-            <h4>/{unitPrice}</h4>
+            <h4 className="product-price">฿{price}</h4>
+            <h5 className="unit-price">/{unitPrice}</h5>
           </div>
           <div className="distance">
             <i className="pin-loc-icon fas fa-map-marker-alt"></i>
-            <h6> {distance} กม.</h6>
+            <h6 className="distance-shop"> {distance} กม.</h6>
           </div>
         </div>
 
         <div className="product-sales">
-          <div className="star-rate">{star.map((el) => el)}</div>
+          <div className="star-rate">{/* {star.map((el) => el)} */}</div>
           <h6 className="amount-sales">
             ขายแล้ว {salesAmountText(salesAmount)}
             {unitPrice}
@@ -82,7 +82,7 @@ function AssetProductCard() {
         </div>
 
         <div className="product-progress">
-          <div className="progress" style={{ height: '0.5rem' }}>
+          <div className="progress">
             <div
               className="progress-bar bg-success"
               role="progressbar"
