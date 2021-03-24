@@ -1,5 +1,5 @@
 import React from 'react';
-import './AssetProductCard.css';
+import './AssetRecommendCard.css';
 import basket from './basket.svg';
 
 const tabStar = (rating) => {
@@ -30,7 +30,7 @@ const salesAmountText = (salesAmount) => {
   return textAmount;
 };
 
-function AssetProductCard(props) {
+function AssetRecommendCard(props) {
   // Mock Data
   // const product = {
   //   picture:
@@ -49,37 +49,39 @@ function AssetProductCard(props) {
 
   const { picture, name, price, unitPrice, distance, salesAmount, amount, favStatus, rating } = props.product;
   const star = tabStar(rating);
-
   return (
-    <div className="product-card">
+    <div className="card mb-3">
       <div className="img-product">
-        <img className="product-photo" alt={name} src={picture} />
+        <img src={picture} className="card-img-top product-pic" alt={name} />
         {favStatus ? <i className="fav-icon icon fa fa-heart"></i> : <i className="fav-icon icon far fa-heart"></i>}
       </div>
 
-      <div className="detail-product">
+      <div className="card-body">
         <div className="product-name">
-          <h5 className="product-name">{name}</h5>
+          <h5 className="card-title">{name}</h5>
           <img className="basket-icon" src={basket} alt="basket" />
         </div>
 
         <div className="product-price-distance">
           <div className="price">
-            <h4 className="product-price">฿{price}</h4>
-            <h5 className="unit-price">/{unitPrice}</h5>
+            <h4 className="card-title">฿{price}</h4>
+            <h5 className="card-title">/{unitPrice}</h5>
           </div>
+
           <div className="distance">
             <i className="pin-loc-icon fas fa-map-marker-alt"></i>
-            <h6 className="distance-shop"> {distance} กม.</h6>
+            <p className="card-text">กม.</p>
           </div>
         </div>
 
         <div className="product-sales">
           <div className="star-rate">{/* {star.map((el) => el)} */}</div>
-          <h6 className="amount-sales">
-            ขายแล้ว {salesAmountText(salesAmount)}
-            {unitPrice}
-          </h6>
+          <p className="card-text">
+            <small className="text-muted">
+              ขายแล้ว {salesAmountText(salesAmount)}
+              {unitPrice}
+            </small>
+          </p>
         </div>
 
         <div className="product-progress">
@@ -99,4 +101,4 @@ function AssetProductCard(props) {
   );
 }
 
-export default AssetProductCard;
+export default AssetRecommendCard;
