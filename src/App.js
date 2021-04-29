@@ -18,8 +18,6 @@ function App() {
       rating: 4.2,
       shopName: 'ฟาร์มแสนสุข',
     },
-    {},
-    {},
     {
       picture: 'https://cdn.chiangmainews.co.th/wp-content/uploads/2016/09/07154331/B6-3.jpg',
       name: 'ส้มโอ',
@@ -32,8 +30,6 @@ function App() {
       rating: 4.2,
       shopName: 'ฟาร์มสุขสบาย',
     },
-    {},
-    {},
   ];
   return (
     <div className="container">
@@ -41,7 +37,7 @@ function App() {
         <div className="row">
           {products.map((product) => {
             return (
-              <div className="col-xl-3 col-md-3 col-6">
+              <div className="col-md-3 col-6">
                 <AssetProductCard product={product} />
               </div>
             );
@@ -50,7 +46,7 @@ function App() {
         <div className="row">
           {products.map((product) => {
             return (
-              <div className="col-xl-3 col-md-4 col-6">
+              <div className="col-md-3 col-6">
                 <AssetRecommendCard product={product} />
               </div>
             );
