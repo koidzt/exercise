@@ -52,11 +52,9 @@ function AssetProductCard(props) {
 
   return (
     <div className="product-card">
-      <div className="img-product square">
-        <div class="content">
-          <img className="rs product-photo" alt={name} src={picture} />
-          {favStatus ? <i className="fav-icon icon fa fa-heart"></i> : <i className="fav-icon icon far fa-heart"></i>}
-        </div>
+      <div className="img-product">
+        <img className="product-photo" alt={name} src={picture} />
+        {favStatus ? <i className="fav-icon icon fa fa-heart"></i> : <i className="fav-icon icon far fa-heart"></i>}
       </div>
 
       <div className="detail-product">
