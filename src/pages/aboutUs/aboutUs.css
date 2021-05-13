@@ -1,0 +1,10 @@
+.bg-about-us {
+  background-image: url('/src/pages/aboutUs/HG.svg');
+  /* Full height */
+  /* height: 1200px; */
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
