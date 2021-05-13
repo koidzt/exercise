@@ -1,0 +1,14 @@
+export const ACTION_TYPE_LOGIN = "LOGIN";
+
+export const ACTION_TYPE_LOGOUT = "LOGOUT";
+// cart
+
+export const ACTION_TYPE_ADD_TO_CART = "ACTION_TYPE_ADD_TO_CART";
+
+// productCert
+
+export const ACTION_TYPE_SET_PRODUCT_CERT = "ACTION_TYPE_SET_PRODUCT_CERT";
+
+// process plant
+
+export const ACTION_TYPE_SET_PROCESS_PLANT = "ACTION_TYPE_SET_PROCESS_PLANT";
