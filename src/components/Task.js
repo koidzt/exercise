@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SubTask from './SubTask';
 
 function Task({ task, i, data, setData }) {
-  const [subTask, setSubTask] = useState();
+  const [subTask, setSubTask] = useState('');
 
   const duplicateTask = () => {
     const duplicate = { ...task };

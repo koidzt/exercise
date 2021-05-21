@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Task from './components/Task';
 
 function App() {
-  const [task, setTask] = useState();
+  const [task, setTask] = useState('');
   const [data, setData] = useState([
     {
       name: 'Task',
