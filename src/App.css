@@ -1,3 +1,20 @@
+:root {
+  --main-green-color: #25b36d;
+
+  --box-danger-bg-color: #ffd2da;
+  --box-input-bg-color: #f5f5f5;
+
+  --border-menu-color: #bbbbbb;
+  --border-danger-color: #ff0000;
+
+  --icon-placeholder-color: #818181;
+
+  --text-white-color: #ffffff;
+  --text-black-color: #333333;
+  --text-note-color: #757575;
+  --text-placeholder: #999999;
+}
+
 .App {
   text-align: center;
   /* padding: 1rem;
@@ -18,7 +35,29 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-body {
+  background-color: #e0e0e0;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: 282c34;
+}
+
+.App-footer {
+  background-color: #282c34;
+  height: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
